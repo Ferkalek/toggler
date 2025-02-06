@@ -1,0 +1,28 @@
+{
+  "projects": {
+    "frontend": {
+      "root": "frontend",
+      "sourceRoot": "frontend/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+
+          "options": {
+            "outputPath": "dist/frontend",
+            "index": "frontend/src/index.html",
+            "main": "frontend/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "frontend/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": ["frontend/src/favicon.ico", "frontend/src/assets"],
+            "styles": ["frontend/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["frontend/src/styles"]
+            }
+          }
+        }
+      }
+    }
+  }
+}

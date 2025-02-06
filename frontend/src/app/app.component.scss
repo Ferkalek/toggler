@@ -1,0 +1,39 @@
+@import '../styles/variables';
+
+header {
+  padding: 1rem;
+
+  background-color: $color-background-light;
+
+  nav {
+    display: flex;
+    gap: 1rem;
+
+    a {
+      text-decoration: none;
+      color: $color-text;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: $color-gray-200;
+      }
+
+      &.active {
+        background-color: $color-primary;
+        color: $color-text-light;
+      }
+    }
+  }
+}
+
+main {
+  padding: 2rem;
+  min-height: calc(100vh - 120px);
+}
+
+footer {
+  padding: 1rem;
+  background-color: $color-background-light;
+  text-align: center;
+}
