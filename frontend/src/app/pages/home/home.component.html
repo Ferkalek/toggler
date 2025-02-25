@@ -1,1 +1,14 @@
-<p>home works!</p>
+<div class="sites">
+  <div *ngFor="let site of sites" class="site-card">
+    <h3>{{ site.name }}</h3>
+    <p>{{ site.description }}</p>
+    <div class="feature-flags">
+      <h4>Feature Flags:</h4>
+      <ul>
+        <li *ngFor="let flag of site.featureFlags" [class.enabled]="flag.isEnabled">
+          {{ flag.name }} - {{ flag.description }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

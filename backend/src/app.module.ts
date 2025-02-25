@@ -1,7 +1,16 @@
-import { Module } from '@nestjs/common';
-import { ProductsModule } from './products/products.module';
+import { Module } from "@nestjs/common";
+import { ConfigModule } from "@nestjs/config";
+import { AuthModule } from "./auth/auth.module";
+import { SitesModule } from "./sites/sites.module";
 
 @Module({
-  imports: [ProductsModule],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: "backend/.env",
+    }),
+    AuthModule,
+    SitesModule,
+  ],
 })
 export class AppModule {}

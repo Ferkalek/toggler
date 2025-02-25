@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { AuthComponent } from './pages/auth/auth.component';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
 
@@ -9,26 +10,36 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: 'Головна сторінка'
+    title: 'Home',
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    title: 'Особистий кабінет',
-    canActivate: [AuthGuard]
+    title: 'Dashboard',
+    canActivate: [AuthGuard],
   },
   {
     path: 'auth',
-    component: AuthComponent,
-    title: 'Авторизація'
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent,
+        title: 'Login',
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
+        title: 'Register',
+      },
+    ],
   },
   {
     path: '404',
     component: NotFoundComponent,
-    title: 'Сторінку не знайдено'
+    title: 'Page Not Found',
   },
   {
     path: '**',
-    redirectTo: '404'
-  }
+    redirectTo: '404',
+  },
 ];

@@ -1,15 +1,23 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  canActivate(): boolean {
-    console.log('AuthGuard canActivate');
-    // TODO: Додати реальну перевірку автентифікації
-    return false;
+  canActivate(): Observable<boolean> {
+    return this.authService.isAuthenticated$.pipe(
+      map((isAuthenticated) => {
+        if (!isAuthenticated) {
+          this.router.navigate(['/auth/login']);
+          return false;
+        }
+        return true;
+      }),
+    );
   }
 }

@@ -25,3 +25,10 @@ $color-text-muted: $color-gray-600;
 // Фонові кольори
 $color-background: #fff;
 $color-background-light: $color-gray-100;
+
+// Кольори статусу фіче флагів
+$color-feature-disabled: $color-danger;
+$color-feature-enabled: $color-success;
+
+// Кольори бордерів
+$color-border: #ddd;
